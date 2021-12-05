@@ -1,0 +1,93 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    display: inline-block;
+    font-size: $default-font-size;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.6rem 3.2rem;
+    border-radius: 10rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s;
+
+    //change the button
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    /*move little bit up when hover the element*/
+    box-shadow: 0 1rem 1rem rgba($color-black, 0.205);
+    &::after {
+      transform: scalex(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.205);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  &::after {
+    content: " ";
+    display: inline-block;
+    height: 100%;
+    /*100% of btn size ex if 
+        btn have 150px height then btn::after the same height*/
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: 10rem;
+    transition: all 0.4s;
+  }
+  &--animated {
+    animation: movetotop 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
+.btn-text {
+  &:link,
+  &:visited {
+    display: inline-block;
+    color: $color-primary;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    font-size: $default-font-size;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 1rem 2rem 2rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

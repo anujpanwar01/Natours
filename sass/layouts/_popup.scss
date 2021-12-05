@@ -1,0 +1,143 @@
+.popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba($color-black, 0.8);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  backdrop-filter: blur(1rem);
+
+  &__content {
+    overflow: hidden;
+    background-color: $color-grey-light-1;
+    width: 75%;
+    display: table;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    @include abscenter; //mixin center element
+    transition: all 0.5s 0.2s; //deley=0.2s
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25); //we repeat here mixin but one content have one transform property
+
+    @include respond(phone) {
+      width: 80%;
+      display: block;
+      padding: 2rem;
+      transform: translate(0, 0) scale(0);
+    }
+  }
+
+  &__left {
+    width: 33.3%;
+    display: table-cell;
+
+    @include respond(tab-land) {
+      padding: 2.5rem 0 2.5rem 2.5rem;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: inline-block;
+    }
+  }
+  &__right {
+    width: 66.66667%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+
+    @include respond(tab-land) {
+      width: 100%;
+      padding: 1.5rem 2rem;
+    }
+    @include respond(tab-port) {
+      width: 100%;
+      padding: 1.5rem 2rem;
+    }
+    @include respond(phone) {
+      width: 100%;
+      padding: 1.5rem;
+      display: block;
+    }
+  }
+  &__img {
+    display: block;
+    width: 100%;
+
+    @include respond(tab-land) {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+    @include respond(phone) {
+      width: 49%;
+      height: 15rem;
+      display: inline-block;
+      margin: 0;
+    }
+  }
+  &__text {
+    margin-bottom: 4rem;
+    font-size: 1.4rem;
+
+    //new property for column gap without using any containers
+    column-count: 2; //here the 1rem = 14px by font-size
+    column-gap: 3rem;
+    column-rule: 1px solid $color-grey-dark-2;
+
+    hyphens: auto;
+    @include respond(tab-land) {
+      column-count: unset;
+      column-gap: 0;
+      column-rule: 0;
+      margin-bottom: 2rem;
+      hyphens: none;
+    }
+
+    @include respond(phone) {
+      column-count: unset;
+      column-gap: 0;
+      column-rule: 0;
+      margin-bottom: 2rem;
+      hyphens: none;
+    }
+  }
+
+  //open states
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(100%);
+  }
+  &__close {
+    &:link,
+    &:visited {
+      display: inline-block;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      text-decoration: none;
+      font-size: 3rem;
+      color: $color-grey-dark-2;
+      line-height: 1;
+      transition: all 0.2s;
+
+      @include respond(phone) {
+        top: 0.5rem;
+        right: 1.5rem;
+      }
+    }
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

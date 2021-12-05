@@ -1,0 +1,38 @@
+
+/*********************
+/* (animation - new tricks) */
+/*********************/
+@keyframes moveinleft {
+    0% {
+      opacity: 0;
+      transform: translatex(-10rem);
+    }
+    90% {
+      transform: translateX(1rem);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes moveinright {
+    0% {
+      opacity: 0;
+      transform: translatex(10rem);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes movetotop {
+    0% {
+      transform: translateY(3rem);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
